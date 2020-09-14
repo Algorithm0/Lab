@@ -28,6 +28,14 @@ Window {
             width: parent.width
             height: parent.height - bar.height
             anchors.top: parent.top
+            visible: false
+        }
+
+        ToDoPanel {
+            id: toDoPanel
+            width: parent.width
+            height: parent.height - bar.height
+            anchors.top: parent.top
         }
 
         Rectangle {
