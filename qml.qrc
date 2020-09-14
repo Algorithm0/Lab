@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml-other/lol.qml</file>
+        <file>resources/null.jpg</file>
+        <file>qml-other/begin-menu/BeginMenu.qml</file>
+        <file>qml-other/panels/PersonPanel.qml</file>
+        <file>qml-other/panels/ToDoPanel.qml</file>
+    </qresource>
+</RCC>
