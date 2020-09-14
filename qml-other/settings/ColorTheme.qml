@@ -14,7 +14,7 @@ Item {
     Settings {
         id: colorThemesSet
         category: "color_theme"
-        property string selected: "whiteTh"
+        property string selected: "white"
     }
 
     states: [

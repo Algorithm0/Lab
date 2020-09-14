@@ -71,27 +71,27 @@ Item {
     ListModel {
         id: modelView
         ListElement {
-            number: 1
+            num: 1
             title: qsTr("Что такое депрессия?")
         }
         ListElement {
-            number: 2
+            num: 2
             title: qsTr("Тест Вашего состояния")
         }
         ListElement {
-            number: 3
+            num: 3
             title: qsTr("Дневник мыслей")
         }
         ListElement {
-            number: 4
+            num: 4
             title: qsTr("Помощь специалиста")
         }
         ListElement {
-            number: 5
+            num: 5
             title: qsTr("Темные цвета")
         }
         ListElement {
-            number: 6
+            num: 6
             title: qsTr("О приложении")
         }
     }
@@ -119,8 +119,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if (number != 5)
-                        clicked(number)
+                    personPanel.clicked(index)
                 }
             }
         }
@@ -176,7 +175,6 @@ Item {
     }
 
     state: "active"
-    anchors.right: root.left
 
     states: [
         State {
