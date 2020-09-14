@@ -2,6 +2,8 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 Item {
+    id: personPanel
+
     Image {
         id: avatar
         source: "qrc:/resources/" + colorTh.icon_dir + "/avatar.png"
@@ -171,6 +173,34 @@ Item {
                 color: colorTh.contrC
             }
         }
+    }
+
+    state: "active"
+    anchors.right: root.left
+
+    states: [
+        State {
+            name: "deactive"
+            AnchorChanges {
+                target: personPanel
+                anchors.right: container.left
+            }
+        },
+
+        State {
+            name: "active"
+            AnchorChanges {
+                target: personPanel
+                anchors.right: container.right
+            }
+        }
+    ]
+
+    transitions: Transition {
+            AnchorAnimation {
+                id: floating
+                duration: 100
+            }
     }
 
     Component.onCompleted: {

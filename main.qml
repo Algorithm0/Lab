@@ -4,6 +4,7 @@ import "./qml-other/settings"
 import "./qml-other/panels"
 
 Window {
+    id: root
     visible: true
     width: 1080/2.5
     height: 2340/2.5
@@ -28,7 +29,7 @@ Window {
             width: parent.width
             height: parent.height - bar.height
             anchors.top: parent.top
-            visible: false
+            state: "active"
         }
 
         ToDoPanel {
@@ -36,6 +37,7 @@ Window {
             width: parent.width
             height: parent.height - bar.height
             anchors.top: parent.top
+            anchors.left: personPanel.right
         }
 
         Rectangle {
@@ -67,13 +69,21 @@ Window {
 
             Image {
                 id: toDoMenu
-                source: "qrc:/resources/" + colorTh.icon_dir + "/ToDo-off.png"
+                source: personPanel.state != "deactive" ? "qrc:/resources/" + colorTh.icon_dir + "/ToDo-off.png"
+                                                        : "qrc:/resources/" + colorTh.icon_dir + "/ToDo-on.png"
                 width: avatarMenu.width
                 height: width
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: parent.width/5
                 fillMode: Image.PreserveAspectFit
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        personPanel.state = "deactive"
+                    }
+                }
             }
         }
     }
