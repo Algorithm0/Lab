@@ -7,6 +7,7 @@ Item {
     property color base_ext: "#404040"
     property color contr: "#447C4F"
     property color contrC: "white"
+    property color shadow: Qt.rgba(0, 0, 0, 0.5)
     property string icon_dir: "blackTh"
 
     state: colorThemesSet.selected
@@ -26,6 +27,7 @@ Item {
                 base_ext: "#404040"
                 contr: "#447C4F"
                 contrC: "white"
+                shadow: Qt.rgba(0, 0, 0, 0.5)
                 icon_dir: "blackTh"
             }
         },
@@ -38,6 +40,7 @@ Item {
                 base_ext: "#C6C6C6"
                 contr: "#005D77"
                 contrC: "black"
+                shadow: Qt.rgba(100, 100, 100, 0.5)
                 icon_dir: "whiteTh"
             }
         }

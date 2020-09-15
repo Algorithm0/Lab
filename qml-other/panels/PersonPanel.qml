@@ -120,6 +120,9 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     personPanel.clicked(index)
+                    if (index == 0) {
+                        videoPlayer.run()
+                    }
                 }
             }
         }

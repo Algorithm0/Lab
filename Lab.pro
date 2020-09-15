@@ -16,7 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml2.qrc
 
 TRANSLATIONS += \
     Lab_ru_RU.ts

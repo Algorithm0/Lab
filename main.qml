@@ -1,7 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtMultimedia 5.12
 import "./qml-other/settings"
 import "./qml-other/panels"
+import "./qml-other/funcionality"
 
 Window {
     id: root
@@ -86,5 +88,63 @@ Window {
                 }
             }
         }
+
+        FuncDisplay {
+            id: funcDisp
+            width: parent.width
+            height: parent.height
+            anchors.top: parent.top
+            //anchors.right: parent.left
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Rectangle {
+            id: videoPlayer
+            width: parent.width
+            height: parent.height
+            anchors.centerIn: parent
+            color: colorTh.shadow
+            visible: false
+
+            function run() {
+                visible = true
+                player.play()
+            }
+
+            Video {
+                id: player
+                width: parent.width
+                height: width
+                anchors.centerIn: parent
+                fillMode: Image.PreserveAspectFit
+                source: "file:///D:/video.mp4"
+                autoPlay: false
+                autoLoad: true
+                onStopped: {
+                    videoPlayer.visible = false
+                }
+            }
+
+            Text {
+                text: qsTr("Нажмите в любую точку экрна,\nчтобы прервать воспроизведение")
+                font.family: "Segoe UI Semibold"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: parent.width * 0.05
+                color: colorTh.contr
+                anchors.top: player.bottom
+                anchors.topMargin: height/2
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    player.stop()
+                    videoPlayer.visible = false
+                }
+            }
+        }
+
     }
 }
