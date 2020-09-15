@@ -94,8 +94,8 @@ Window {
             width: parent.width
             height: parent.height
             anchors.top: parent.top
-            //anchors.right: parent.left
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: parent.left
+            //anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Rectangle {
@@ -117,7 +117,7 @@ Window {
                 height: width
                 anchors.centerIn: parent
                 fillMode: Image.PreserveAspectFit
-                source: "file:///D:/video.mp4"
+                source: "qrc:/resources/WhatIsDepress.mp4"
                 autoPlay: false
                 autoLoad: true
                 onStopped: {

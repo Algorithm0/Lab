@@ -77,7 +77,7 @@ Item {
                     width: parent.width * 0.8
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
-                        panel.clicked(number)
+                        panel.clicked(-1 * number)
                     }
 
                     background: Rectangle {

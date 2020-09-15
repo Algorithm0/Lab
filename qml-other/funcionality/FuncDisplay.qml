@@ -16,12 +16,12 @@ Rectangle {
         anchors.topMargin: width * 0.3
         fillMode: Image.PreserveAspectFit
 
-//        MouseArea {
-//            anchors.fill: parent
-//            onClicked: {
-//                personPanel.state = "deactive"
-//            }
-//        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                hideMenu()
+            }
+        }
     }
 
     Text {
@@ -36,13 +36,80 @@ Rectangle {
         anchors.verticalCenter: backBut.verticalCenter
     }
 
+    states: [
+        State {
+            name: "closing"
+            AnchorChanges {
+                target: smallMenu
+                anchors.right: container.left
+            }
+        },
+
+        State {
+            name: "showing"
+            AnchorChanges {
+                target: smallMenu
+                anchors.right: container.right
+            }
+        }
+    ]
+
+    transitions: Transition {
+        SequentialAnimation {
+
+            ScriptAction {
+                script: {
+                    if (smallMenu.state == "closing")
+                    {
+                        bar.visible = true
+                        personPanel.visible = true
+                        toDoPanel.visible = true
+                    }
+                }
+            }
+
+            AnchorAnimation {
+                id: floating
+                duration: 100
+            }
+
+            ScriptAction {
+                script: {
+                    if (smallMenu.state == "showing")
+                    {
+                        bar.visible = false
+                        personPanel.visible = false
+                        toDoPanel.visible = false
+                    }
+                    else {
+                        num_menu = 0
+                    }
+                }
+            }
+        }
+    }
+
+    function showMenu(num) {
+        if (num >= -4 && num <= 5 && num != 4 && num != 0)
+        {
+            num_menu = num
+            state = "showing"
+        }
+    }
+
+    function hideMenu() {
+        state = "closing"
+    }
+
+    state: "closing"
+
     NoReady {
         id: funcCont
         anchors.top: backBut.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         height: parent.height - (titleText.y + titleText.height)
-        visible: true
+        visible: num_menu != 0
     }
 
 
@@ -58,6 +125,11 @@ Rectangle {
         case 5: return qsTr("О приложении")
         default: return qsTr("Неизвестный\nпункт")
         }
+    }
+
+    Component.onCompleted: {
+        personPanel.clicked.connect(showMenu)
+        toDoPanel.clicked.connect(showMenu)
     }
 
 
