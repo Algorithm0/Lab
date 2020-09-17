@@ -23,5 +23,19 @@
         <file>qml-other/funcionality/funcs/NoReady.qml</file>
         <file>resources/coffe.png</file>
         <file>resources/WhatIsDepress.mp4</file>
+        <file>resources/RelaxMusic/Enigma - Sadeness.mp3</file>
+        <file>resources/RelaxMusic/Ennio Morricone - Chi Mai.mp3</file>
+        <file>resources/RelaxMusic/James Last - The Lonely Shepherd.mp3</file>
+        <file>resources/RelaxMusic/Weathertunes - Sunny Day (Lemongrass Lazy Afternoon).mp3</file>
+        <file>resources/RelaxMusic/Weber - In This Dream.mp3</file>
+        <file>resources/blackTh/play.png</file>
+        <file>resources/blackTh/stop.png</file>
+        <file>resources/blackTh/update.png</file>
+        <file>resources/whiteTh/play.png</file>
+        <file>resources/whiteTh/stop.png</file>
+        <file>resources/whiteTh/update.png</file>
+        <file>qml-other/funcionality/funcs/AboutApp.qml</file>
+        <file>resources/blackTh/git.png</file>
+        <file>resources/whiteTh/git.png</file>
     </qresource>
 </RCC>

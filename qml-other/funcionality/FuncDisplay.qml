@@ -6,36 +6,6 @@ Rectangle {
     color: colorTh.base
     property int num_menu: 0
 
-    Image {
-        id: backBut
-        source: "qrc:/resources/" + colorTh.icon_dir + "/arrow-menu.png"
-        width: parent.width * 0.14
-        height: width
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.topMargin: width * 0.3
-        fillMode: Image.PreserveAspectFit
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                hideMenu()
-            }
-        }
-    }
-
-    Text {
-        id: titleText
-        text: getTitle(num_menu)
-        font.family: "Segoe UI Semibold"
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: parent.width * 0.07
-        color: colorTh.contr
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: backBut.verticalCenter
-    }
-
     states: [
         State {
             name: "closing"
@@ -109,7 +79,25 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         height: parent.height - (titleText.y + titleText.height)
-        visible: num_menu != 0
+        visible: num_menu > -4 && num_menu != 0 && num_menu < 5
+    }
+
+    MusicPlayer {
+        id: funcMusic
+        anchors.top: backBut.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width
+        height: parent.height - (titleText.y + titleText.height)
+        visible: num_menu == -4
+    }
+
+    AboutApp {
+        id: funcAbout
+        anchors.top: backBut.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width
+        height: parent.height - (titleText.y + titleText.height)
+        visible: num_menu == 5
     }
 
 
@@ -125,6 +113,36 @@ Rectangle {
         case 5: return qsTr("О приложении")
         default: return qsTr("Неизвестный\nпункт")
         }
+    }
+
+    Image {
+        id: backBut
+        source: "qrc:/resources/" + colorTh.icon_dir + "/arrow-menu.png"
+        width: parent.width * 0.14
+        height: width
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: width * 0.3
+        fillMode: Image.PreserveAspectFit
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                hideMenu()
+            }
+        }
+    }
+
+    Text {
+        id: titleText
+        text: getTitle(num_menu)
+        font.family: "Segoe UI Semibold"
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: parent.width * 0.07
+        color: colorTh.contr
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: backBut.verticalCenter
     }
 
     Component.onCompleted: {
